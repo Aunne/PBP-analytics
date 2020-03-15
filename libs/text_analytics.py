@@ -4,8 +4,8 @@ from bs4 import   BeautifulSoup
 class Biopsy :                  #原始碼切片物件
     def  __init__(self) :    ＃初始值
     def  Client_URL_analyze(Client_giving_URL=None) :  #客戶端網址解析器
-    def  Client_URL_code_analyze() :    #客戶端原始碼解析器
-        
+    def  Client_URL_code_analyze(Client_giving_URL=None) :    #客戶端原始碼解析器
+
 
 
 
