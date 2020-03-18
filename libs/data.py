@@ -13,18 +13,45 @@ class Data:
     """
     To control data for PBP
     """
-    def __init__(self, db_connect_info):
+
+    def __init__(self, pbp_handle):
         """
         Configure and initialize database details
         :param db_connect_info:
         """
-        self.db_client = sql_client.connect(**db_connect_info)
+        self.db_client = sql_client.connect(**pbp_handle.cfg["MySQL"])
 
-    def image_register(self):
-        pass
+        self.pbp_handle = pbp_handle
 
-    def url_query(self, url):
-        return url
+    def check_blacklist(self, url):
+        cursor = self.db_client.cursor(dictionary=True)
+        cursor.execute(
+            "SELECT `url`, `date` FROM blacklist WHERE url = %s",
+            (url,)
+        )
+        result = cursor.fetchall()
+        self.db_client.commit()
+        cursor.close()
+        return result
 
-    def url_mark(self, url, type):
-        pass
+    def mark_as_blacklist(self, url):
+        cursor = self.db_client.cursor(dictionary=True)
+        date = self.pbp_handle.get_time()
+        cursor.execute(
+            "INSERT INTO `blacklist`(`url`, `date`) VALUES (%s, %s)",
+            (url, date)
+        )
+        self.db_client.commit()
+        cursor.close()
+        return True
+
+    def find_page_view_signature(self, sign):
+        cursor = self.db_client.cursor(dictionary=True)
+        cursor.execute(
+            "SELECT `url, date, data` FROM view_signatures WHERE signature = %s",
+            (sign,)
+        )
+        result = cursor.fetchall()
+        self.db_client.commit()
+        cursor.close()
+        return result

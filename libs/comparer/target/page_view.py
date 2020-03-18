@@ -1,7 +1,8 @@
-import cv2
 import os
-import skimage.measure as measure
 import subprocess
+
+import cv2
+import skimage.measure as measure
 
 """
     Copyright (c) 2019 SuperSonic(https://randychen.tk)
