@@ -5,7 +5,7 @@ url_origin="https://project.starinc.xyz/pbp_test/test.php"
 url_code=requests.get(url=url_origin).text
 soup=BeautifulSoup(url_code,'lxml')
 
-if 'bbb' in soup.title.string :
+if '登入' in soup.title.string :
     print("yes")
 else :
     for tag_input in soup('input') :
