@@ -8,11 +8,9 @@ soup=BeautifulSoup(url_code,'lxml')
 if 'bbb' in soup.title.string :
     print("yes")
 else :
-    for tag_input in soup.find_all('input') :
-        if '登入' in tag_input.text :
+    for tag_input in soup('input') :
+        if '登入' in str(tag_input) :
             print('yes')
-        else :
-            print(tag_input.text)
 
     
 
