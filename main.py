@@ -2,7 +2,7 @@
 """
 Phishing Blocker Project - Analytics
 
-(c)2019 SuperSonic(https://randychen.tk).
+(c)2020 Star Inc.(https://starinc.xyz).
 ===
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -10,9 +10,8 @@ Phishing Blocker Project - Analytics
 ===
 """
 
-from libs.analytics import Analytics
+from libs import Analytics
 
 if __name__ == "__main__":
     handle = Analytics()
-    print("PBP Server\n{}\n".format(handle.get_time()))
     handle.start()

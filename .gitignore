@@ -1,5 +1,12 @@
 # Custom file
 config.ini
+cache/
+core.*
+.alive
+
+# Editor config
+.theia
+.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
